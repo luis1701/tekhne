@@ -6,6 +6,9 @@ exports.successMessages = {
     orders: {
         post: 'Order created with success',
         get: 'Fetch orders with success'
+    },
+    customers: {
+        post: 'Customer created with success'
     }
 }
 
@@ -16,5 +19,8 @@ exports.errorMessages = {
     },
     orders: {
         post: 'Something went wrong trying to create the order'
-    }
+    },
+    customers: {
+        post: 'Something went wrong trying to create the customer'
+    },
 }
