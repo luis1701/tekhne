@@ -1,0 +1,41 @@
+const { errorMessages } = require('../constants/messages')
+
+exports.validProductData = (req, res, next) => {
+  try {
+    const { body } = req;
+    const { title, price } = body;
+    if (!title || title.trim().length === 0 || !price || price <= 0) {
+      return res.status(422).json({
+        message: errorMessages.products.post
+      });
+    }
+    next();
+  } catch (error) {
+    return res.status(422).json({
+      message: errorMessages.products.post
+    });
+  }
+}
+
+exports.validOrderData = (req, res, next) => {
+  try {
+    const { body } = req;
+    const { products, type, date, customer } = body;
+    if (!type || type.trim().length === 0 || !date || type.trim().length === 0) {
+      return res.status(422).json({
+        message: errorMessages.orders.post
+      });
+    }
+    const { name, phone } = customer || {}
+    if (!Array.isArray(products) && !name || name.trim().length === 0 || !phone || phone.trim().length === 0) {
+      return res.status(422).json({
+        message: errorMessages.orders.post
+      });
+    }
+    next();
+  } catch (error) {
+    return res.status(422).json({
+      message: errorMessages.orders.post
+    });
+  }
+}
