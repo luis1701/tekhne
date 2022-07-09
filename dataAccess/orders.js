@@ -41,3 +41,11 @@ exports.updateOrderDB = async (id, updatedOrder) => {
 	console.log(res)
 	return res
 }
+
+exports.deleteOrderByIdDB = async (id) => {
+	await client.connect();
+	const collection = client.db().collection('orders');
+	const res = await collection.deleteOne({ _id: new ObjectId(id) })
+	console.log(res)
+	return res
+}
