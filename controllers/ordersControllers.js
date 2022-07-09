@@ -1,4 +1,4 @@
-const { createOrder, getOrders, updateOrder } = require('../services/orderServices')
+const { createOrder, getOrders, updateOrder, getOrderById } = require('../services/orderServices')
 const { successMessages, errorMessages } = require('../constants/messages')
 
 exports.createOrderController = async (req, res, next) => {
@@ -34,3 +34,15 @@ exports.updateOrderController = async (req, res, next) => {
   }
 }
 
+exports.getOrderByIdController = async (req, res, next) => {
+  const { params } = req;
+  const { id } = params;
+  const order = await getOrderById(id)
+  if (order) {
+    return res.status(200).json({ order: order });
+  } else {
+    return res.status(422).json({
+      message: 'Invalid input, please enter a valid id.'
+    });
+  }
+}
