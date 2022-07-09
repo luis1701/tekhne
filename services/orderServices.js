@@ -1,4 +1,4 @@
-const { createOrderDB, getOrdersDB, getOrderByIdDB, updateOrderDB } = require('../dataAccess/orders')
+const { createOrderDB, getOrdersDB, getOrderByIdDB, updateOrderDB, deleteOrderByIdDB } = require('../dataAccess/orders')
 const { ObjectId } = require('mongodb');
 const { getProducts } = require('./productServices')
 const _ = require('lodash')
@@ -120,6 +120,15 @@ exports.updateOrder = async (id, orderData) => {
     };
     await updateOrderDB(id, updatedOrder)
     return updatedOrder
+  }
+  return null
+}
+
+exports.deleteOrderById = async (id) => {
+  const order = await this.getOrderById(id)
+  if (order) {
+    await deleteOrderByIdDB(id)
+    return order
   }
   return null
 }
