@@ -52,7 +52,7 @@ exports.deleteOrderByIdController = async (req, res, next) => {
   const { id } = params;
   const deletedOrder = await deleteOrderById(id)
   if (deletedOrder) {
-    return res.status(200).json({ deleted: true, product: deletedOrder });
+    return res.status(200).json({ deleted: true, order: deletedOrder });
   } else {
     console.log(id, ' Order con id no encontrado')
     return res.status(422).json({
