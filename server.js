@@ -4,6 +4,7 @@ const productsRoutes = require('./routes/productsRoutes')
 const ordersRoutes = require('./routes/ordersRoutes')
 const customerRoutes = require('./routes/customerRoutes')
 const categoriesRoutes = require('./routes/categoriesRoutes')
+const rolesRoutes = require('./routes/rolesRoutes')
 
 const app = express();
 
@@ -27,5 +28,6 @@ app.use(productsRoutes)
 app.use(ordersRoutes)
 app.use(customerRoutes)
 app.use(categoriesRoutes)
+app.use(rolesRoutes)
 
 app.listen(8080); // start Node + Express server on port 8080

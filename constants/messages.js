@@ -13,6 +13,9 @@ exports.successMessages = {
     categories: {
         post: 'Category created with success',
         get: 'Fetch Categories with success'
+    },
+    roles: {
+        post: 'Role created with success'
     }
 }
 
@@ -30,5 +33,8 @@ exports.errorMessages = {
     categories: {
         post: 'Something went wrong trying to create the Category',
         get: 'Something went wrong trying to fetch the Categories'
+    },
+    roles: {
+        post: 'Something went wrong trying to create the role'
     }
 }

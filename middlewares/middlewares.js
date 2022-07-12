@@ -55,7 +55,7 @@ exports.validCustomerData = (req, res, next) => {
         message: errorMessages.customers.post
       });
     }
-   
+
     next();
   } catch (error) {
     console.error(error);
@@ -85,6 +85,23 @@ exports.validCategoriesData = (req, res, next) => {
   } catch (error) {
     return res.status(422).json({
       message: errorMessages.categories.post+"3"
+    });
+  }
+}
+
+exports.validRoutesData = (req, res, next) => {
+  try {
+    const { body } = req;
+    const { name, scope } = body;
+    if (!name || name.trim().length === 0 || !scope || scope.length <= 0) {
+      return res.status(422).json({
+        message: errorMessages.roles.post
+      });
+    }
+    next();
+  } catch (error) {
+    return res.status(422).json({
+      message: errorMessages.roles.post
     });
   }
 }
