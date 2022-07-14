@@ -1,4 +1,4 @@
-const { errorMessages } = require('../constants/messages')
+const { errorMessages } = require('../constants/messages');
 
 exports.validProductData = (req, res, next) => {
   try {
@@ -36,6 +36,31 @@ exports.validOrderData = (req, res, next) => {
   } catch (error) {
     return res.status(422).json({
       message: errorMessages.orders.post
+    });
+  }
+}
+
+exports.validCustomerData = (req, res, next) => {
+  try {
+    const { body } = req;
+    const { name, phone, email } = body;
+
+    if ( !name || name.trim().length === 0 || !phone || typeof phone !== 'number' || phone < 1) {
+      return res.status(422).json({
+        message: errorMessages.customers.post
+      });
+    }
+    if ( !email || email.trim().length === 0 || typeof email !== 'string') {
+      return res.status(422).json({
+        message: errorMessages.customers.post
+      });
+    }
+   
+    next();
+  } catch (error) {
+    console.error(error);
+    return res.status(422).json({
+      message: errorMessages.customers.post
     });
   }
 }
