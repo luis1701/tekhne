@@ -9,3 +9,10 @@ exports.createCategoryDB = async (category) => {
 	console.log(res)
 	return res
 }
+
+exports.getCategoryByName = async (name) => {
+	await client.connect();
+	const collection = client.db().collection('categories');
+	const res = await collection.findOne({ name: name });
+	return res;
+}
