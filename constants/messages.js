@@ -8,7 +8,11 @@ exports.successMessages = {
         get: 'Fetch orders with success'
     },
     customers: {
-        post: 'Customer created with success'
+        post: 'Customer created with success',
+    },
+    categories: {
+        post: 'Category created with success',
+        get: 'Fetch Categories with success'
     }
 }
 
@@ -23,4 +27,8 @@ exports.errorMessages = {
     customers: {
         post: 'Something went wrong trying to create the customer'
     },
+    categories: {
+        post: 'Something went wrong trying to create the Category',
+        get: 'Something went wrong trying to fetch the Categories'
+    }
 }
