@@ -1,14 +1,19 @@
-const {createRolesDB} = require("../dataAccess/roles");
+const {createRolesDB, getRoleByNameBD} = require("../dataAccess/roles");
 
 exports.createRoles = async (data) => {
     const { name, scope } = data
-    const createdProduct = {
+    const createdRole = {
         name,
         scope
     };
-    const res = await createRolesDB(createdProduct)
+
+    roleFound = await getRoleByNameBD(name);
+
+    if(roleFound) return false;
+
+    const res = await createRolesDB(createdRole)
     if (res) {
-        return createdProduct
+        return createdRole
     } else {
         return false
     }

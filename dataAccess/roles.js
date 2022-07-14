@@ -9,3 +9,10 @@ exports.createRolesDB = async (roles) => {
     console.log(res)
     return res
 }
+
+exports.getRoleByNameBD = async (name) => {
+    await client.connect();
+    const collection = client.db().collection('roles');
+    const res = await collection.findOne({ name: name });
+    return res;
+}

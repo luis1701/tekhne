@@ -89,7 +89,7 @@ exports.validCategoriesData = (req, res, next) => {
   }
 }
 
-exports.validRoutesData = (req, res, next) => {
+exports.validRoleData = (req, res, next) => {
   try {
     const { body } = req;
     const { name, scope } = body;
