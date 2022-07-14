@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const productsRoutes = require('./routes/productsRoutes')
 const ordersRoutes = require('./routes/ordersRoutes')
 const customerRoutes = require('./routes/customerRoutes')
+const categoriesRoutes = require('./routes/categoriesRoutes')
 
 const app = express();
 
@@ -25,5 +26,6 @@ app.use((req, res, next) => {
 app.use(productsRoutes)
 app.use(ordersRoutes)
 app.use(customerRoutes)
+app.use(categoriesRoutes)
 
 app.listen(8080); // start Node + Express server on port 8080

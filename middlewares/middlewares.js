@@ -61,6 +61,30 @@ exports.validCustomerData = (req, res, next) => {
     console.error(error);
     return res.status(422).json({
       message: errorMessages.customers.post
+    })
+  }
+}
+exports.validCategoriesData = (req, res, next) => {
+  try {
+    const { body } = req;
+    const { name, modifier } = body;
+    console.log(name.trim().length)
+    console.log(modifier)
+    if (!name || name.trim().length === 0 || typeof modifier !== 'boolean') {
+      return res.status(422).json({
+        message: errorMessages.categories.post+"1" 
+      });
+    }
+    const { tags } = body || {}
+    if (!Array.isArray(tags)) {
+      return res.status(422).json({
+        message: errorMessages.categories.post+"2"
+      });
+    }
+    next();
+  } catch (error) {
+    return res.status(422).json({
+      message: errorMessages.categories.post+"3"
     });
   }
 }
