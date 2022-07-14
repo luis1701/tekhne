@@ -12,7 +12,7 @@ exports.successMessages = {
     },
     categories: {
         post: 'Category created with success',
-        get: 'Fetch Category with success'
+        get: 'Fetch Categories with success'
     }
 }
 

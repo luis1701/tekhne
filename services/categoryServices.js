@@ -9,7 +9,7 @@ exports.createCategory = async (data) => {
         name, modifier, tags
     };
 
-    categoryExist = await getCategoryByName(name);
+    const categoryExist = await getCategoryByName(name);
     if(categoryExist){
       return false;
     }
