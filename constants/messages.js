@@ -13,6 +13,10 @@ exports.successMessages = {
     categories: {
         post: 'Category created with success',
         get: 'Fetch Categories with success'
+    },
+    cities: {
+        post: 'City created with success',
+        get: 'Fetch cities with success'
     }
 }
 
@@ -30,5 +34,9 @@ exports.errorMessages = {
     categories: {
         post: 'Something went wrong trying to create the Category',
         get: 'Something went wrong trying to fetch the Categories'
+    },
+    cities: {
+        post: 'Something went wrong trying to create the City',
+        get: 'Something went wrong trying to fetch the Cities'
     }
 }
