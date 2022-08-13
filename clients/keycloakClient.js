@@ -1,4 +1,5 @@
 const axios = require('axios').default;
+const qs = require('qs');
 
 class keycloakClient {
   constructor() {
@@ -12,8 +13,28 @@ class keycloakClient {
   getInstance() {
     return this.instance;
   }
-  login(user, password) {
-    // TODO call login to keycloak
+  async login(user, password) {
+      try {
+        const data = { 
+            'grant_type': 'password',
+            'client_id': this.client_id,
+            'client_secret': this.client_secret,
+            'username': user,
+            'password': password
+         };
+        const options = {
+            method: 'POST',
+            headers: { 'content-type': 'application/x-www-form-urlencoded' },
+            data: qs.stringify(data),
+            url: 'http://localhost:8080/realms/tekne/protocol/openid-connect/token',
+        };
+
+        const res = await axios(options);
+
+        return res.data
+    } catch (error) {
+        return error
+    }
   }
 }
 

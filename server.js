@@ -5,6 +5,7 @@ const ordersRoutes = require('./routes/ordersRoutes')
 const customerRoutes = require('./routes/customerRoutes')
 const categoriesRoutes = require('./routes/categoriesRoutes')
 const citiesRoutes = require('./routes/citiesRoutes')
+const authRoutes = require('./routes/authRoutes')
 
 const app = express();
 
@@ -29,5 +30,6 @@ app.use(ordersRoutes)
 app.use(customerRoutes)
 app.use(categoriesRoutes)
 app.use(citiesRoutes)
+app.use(authRoutes)
 
-app.listen(8080); // start Node + Express server on port 8080
+app.listen(8083); // start Node + Express server on port 8080
