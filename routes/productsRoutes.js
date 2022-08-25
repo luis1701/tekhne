@@ -8,9 +8,10 @@ const {
     putProductController
 } = require('../controllers/productsControllers')
 const { validProductData } = require('../middlewares/middlewares');
+const { validToken } = require('../middlewares/middlewares');
 
 router.get('/products/', getProductsController);
-router.post('/products', validProductData, createProductController);
+router.post('/products', validToken, validProductData, createProductController);
 router.get('/products/:id', getProductByIdController);
 router.delete('/products/:id', deleteProductByIdController);
 router.put('/products/:id', validProductData, putProductController);

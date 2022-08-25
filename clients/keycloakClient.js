@@ -36,6 +36,21 @@ class keycloakClient {
         return error
     }
   }
+  async getInfo(token) {
+    
+    const key = 'Bearer ' + token;
+    try {
+      const options = {
+          method: 'GET',
+          headers: { 'Authorization': key },
+          url: 'http://localhost:8080/realms/tekne/protocol/openid-connect/userinfo',
+      };
+      const res = await axios(options);
+      return res.data
+  } catch (error) {
+      return error
+  }
+}
 }
 
 module.exports = new keycloakClient();
